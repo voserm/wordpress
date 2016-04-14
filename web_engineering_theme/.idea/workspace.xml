@@ -25,36 +25,7 @@
     <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a2bb5b4-73c8-4d63-93b9-11aabfc0b54b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Icons/menu-about.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Icons/menu-blog.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Icons/menu-contact.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Icons/menu-home.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Icons/menu-portfolio.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/bg/divider12.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/bg/divider22.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/bg/divider66.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/bg/divider661.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/header_bg2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/portfolio/folio01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/portfolio/folio02.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/portfolio/folio03.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/portfolio/folio04.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/portfolio/folio05.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/portfolio/folio06.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../assets/img/team/u1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../footer.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../header.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../index_old.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../sidebar.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../style_old.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../web_wordpress.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="7a2bb5b4-73c8-4d63-93b9-11aabfc0b54b" name="Default" comment="" />
     <ignored path="web_engineering_theme.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -843,12 +814,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1460628231840</updated>
-      <workItem from="1460628236334" duration="262000" />
+      <workItem from="1460628236334" duration="472000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262000" />
+    <option name="totallyTimeSpent" value="472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
