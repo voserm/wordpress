@@ -21,9 +21,12 @@
             <img src="<?php bloginfo('template_url'); ?>/assets/img/header_bg2.jpg">
             <div class="headertext">
                 <h1><span ></span></h1>
-                <p>A 2.0 web developer.</p>
+                <?php
+                    $content_lines = explode("\n",get_post_field('post_content', 25));
+                ?>
+                <p><?php echo $content_lines[0]; ?></p>
                 </br>
-                <p>At your service</p>
+                <p><?php echo $content_lines[1]; ?></p>
             </div>
         </header>
 
@@ -100,13 +103,13 @@
             <div id="wrapper-switch-portfolio">
 
                 <div id="ph-switch-portfolio">
-                    <div class="switch-portfolio">
+                    <div class="switch-portfolio" id="portfolio_all">
                         <p>ALL</p>
                     </div>
-                    <div class="switch-portfolio">
+                    <div class="switch-portfolio" id="portfolio_uidesign">
                         <p> UI DESIGN </p>
                     </div>
-                    <div class="switch-portfolio">
+                    <div class="switch-portfolio" id="portfolio_androidpage">
                         <p> ANDROID PAGE </p>
                     </div>
                 </div>
@@ -118,7 +121,7 @@
 
                 <!-- PORTFOLIO IMAGE 1 -->
 
-                <div class="portfolio-part">
+                <div class="portfolio-part uidesign">
                     <figure>
                         <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio01.jpg" alt="">
                         <figcaption class="portfolio-bottom">
@@ -131,7 +134,7 @@
 
                 <!-- PORTFOLIO IMAGE 2 -->
 
-                <div class="portfolio-part">
+                <div class="portfolio-part uidesign">
                     <figure>
                         <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio02.jpg" alt="">
                         <figcaption class="portfolio-bottom">
@@ -144,7 +147,7 @@
 
                 <!-- PORTFOLIO IMAGE 3 -->
 
-                <div class="portfolio-part">
+                <div class="portfolio-part androidpage">
                     <figure>
                         <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio03.jpg" alt="">
                         <figcaption class="portfolio-bottom">
@@ -156,7 +159,7 @@
 
                 <!-- PORTFOLIO IMAGE 4 -->
 
-                <div class="portfolio-part">
+                <div class="portfolio-part androidpage">
                     <figure>
                         <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio04.jpg" alt="">
                         <figcaption class="portfolio-bottom">
@@ -169,7 +172,7 @@
 
                 <!-- PORTFOLIO IMAGE 5-->
 
-                <div class="portfolio-part">
+                <div class="portfolio-part androidpage">
                     <figure>
                         <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio05.jpg" alt="">
                         <figcaption class="portfolio-bottom">
@@ -182,7 +185,7 @@
 
                 <!-- PORTFOLIO IMAGE 6 -->
 
-                <div class="portfolio-part">
+                <div class="portfolio-part androidpage">
                     <figure>
                         <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio06.jpg" alt="">
                         <figcaption class="portfolio-bottom">

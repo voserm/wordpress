@@ -127,6 +127,19 @@ function animSetUp() {
 
         if ($('#portfolio').in_viewport()) {
             $('#portfolio').animate({'margin-left': '0'});
+            $( '#portfolio_all' ).click(function() {
+                $('.portfolio-part').show();
+            });
+
+            $( "#portfolio_uidesign" ).click(function() {
+                $('.portfolio-part').hide();
+                $('.uidesign').show();
+            });
+
+            $( "#portfolio_androidpage" ).click(function() {
+                $('.portfolio-part').hide();
+                $('.androidpage').show();
+            });
         }
 
         if ($('#blog').in_viewport()) {
@@ -161,7 +174,6 @@ function animSetUp() {
 }
 
 $(document).ready(function() {
-
 
     // Hide elements which are animated by appearance
     $('.headertext').hide();
