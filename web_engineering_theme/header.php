@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title><?php bloginfo('name'); ?> | <?php wp_title(); ?></title>
+    <title><?php bloginfo('name'); ?> | <?php bloginfo('description'); ?></title>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -16,7 +16,7 @@
 
 
     <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/main.js"></script>
-
+    <?php wp_head(); ?>
 </head>
 
-<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+<body <?php body_class(''); ?> data-spy="scroll" data-offset="0" data-target="#navbar-main">

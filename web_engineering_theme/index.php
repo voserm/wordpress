@@ -33,24 +33,27 @@
         <!-- ==== ABOUT ==== -->
         <div id="about-all">
 
-            <?php echo get_post_field('post_content', 20); ?>
+            <!-- ?php echo get_post_field('post_content', 20); ?> -->
+
+            <section id="about">
+
+                <?php
+                $content_post = get_page_by_title('about');
+                $content = $content_post->post_content;
+                echo $content;
+                ?>
+
+            </section>
 
             <!-- ==== SECTION DIVIDER1 -->
 
             <section id="group1">
 
-                <div>
-                    <br>
-                    <h1 class="title pages-headline"> PART DESIGNER... </h1>
-                    <hr width="34%" ; color="#CCC9C9">
-
-                    <p class="text"> A web developer needs to have a good aesthetic eye on his product. </br>
-                        For this reason part of my skills include user interface and </br>
-                        interaction design. </p>
-                    </br>
-                    </br>
-                    </br>
-                </div>
+                <?php
+                $content_post = get_page_by_title('group1');
+                $content = $content_post->post_content;
+                echo $content;
+                ?>
 
             </section>
 
@@ -58,29 +61,47 @@
 
             <section id="group2">
 
-                <div>
-                    <br>
-                    <br>
-                    <br>
-                    <h1 class="title pages-headline"> PART CODER! </h1>
-                    <hr width="49%" ; color="#CCC9C9">
-
-                    <p class="text"> But a website cannot be just nice to see... It has to work! That's why we have JavaScript, PHP and CMS like WordPress </p>
-                    </br>
-                    </br>
-                </div>
+                <?php
+                $content_post = get_page_by_title('group2');
+                $content = $content_post->post_content;
+                echo $content;
+                ?>
 
             </section>
 
             <!-- ==== TEHCNICAL SKILLS-->
 
-          <?php
-          //$my_postid = 14;
-          //$content_post = get_post($my_postid);
-          $content_post = get_page_by_title('skills');
-          $content = $content_post->post_content;
-          echo $content;
-          ?>
+            <section id="skills" style="margin-top: 0px;">
+
+                <br>
+                <br>
+                <h1 class="title pages-headline"> My Technical Skills New </h1>
+
+                <div class="container">
+                    <div class="bar blue">
+                        <div class="num">95<span>%</span></div>
+                        <div class="word">HTML</div>
+                    </div>
+                    <div class="bar red">
+                        <div class="num">80<span>%</span></div>
+                        <div class="word">CSS</div>
+                    </div>
+                    <div class="bar brown">
+                        <div class="num">90<span>%</span></div>
+                        <div class="word">JavaScript</div>
+                    </div>
+                    <div class="bar gray">
+                        <div class="num">80<span>%</span></div>
+                        <div class="word">WordPress</div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <hr color="#CCC9C9">
+
+            </section>
 
             <!-- ?php echo get_post_field('post_content', 14); ?> -->
 
@@ -215,19 +236,23 @@
         </header>
 
         <div class="blog-content">
+            <?php
+            $args = array( 'numberposts' => '2' );
+            $recent_posts = wp_get_recent_posts( $args );
+            foreach( $recent_posts as $recent ){
 
-            <article class="blog-post">
+            echo '<article class="blog-post">
 
                 <header class="post-info">
-                    <br>
-                    <p><img src="<?php bloginfo('template_url'); ?>/assets/img/team/u1.jpg" width="60px" height="60px"></p>
-                    <h4>Pinco Pallino</h4>
-                    <h5>Published Feb 28.</h5>
+                    <br>             
+                    <p>'.get_avatar( get_the_author_meta($recent["post_author"]), 60 ).'</p>
+                    <h4>'.get_the_author_meta('display_name', $recent["post_author"]).'</h4>
+                    <h5>Published '.date('M d',strtotime($recent["post_date"])).'.</h5>
                 </header>
 
                 <section class="post-content">
 
-                    <h2>What Define Success</h2>
+                    <h2>'.$recent["post_title"].'</h2>
                     <p>No matter how old you are, where you’re from or what you do for a living, we all share something in common—a desire to be successful. .</p>
                     <p>Each person’s definition of success is different, however, as some may define success as being a loving and faithful spouse or a caring and responsible parent, while most people would equate success with wealth, fame, and power</p>
 
@@ -239,59 +264,30 @@
 
                 </section>
 
-            </article>
+            </article>';
 
-            <article class="blog-post">
-
-                <header class="post-info">
-                    <br>
-                    <p><img src="<?php bloginfo('template_url'); ?>/assets/img/team/u1.jpg" width="60px" height="60px"></p>
-                    <h4>Pinco Pallino</h4>
-                    <h5>Published Feb 02.</h5>
-                </header>
-
-                <section class="post-content">
-
-                    <h2>A Beautiful Story</h2>
-                    <p>One day, in a heavily crowded place, a young man was shouting at the crowd. “People look at me; I have the most beautiful heart in the world.”</p>
-                    <p>Many people looked at him and were stunned to see the beautiful heart in a perfect shape, no little flaw, which looked quite amazing. Most of the people who saw his heart was mesmerized by the beauty of his heart and praised him. </p>
-
-                    <br/>
-                    <br/>
-                    <br/>
-                    <p><a class="news-link " href="#"> Read More</a></p>
-                    <br>
-
-                </section>
-
-            </article>
+            }
+            ?>
 
             <aside class="news-post">
 
-                <div class="news">
+                <?php
+                $args = array( 'numberposts' => '5' );
+                $recent_posts = array_slice(wp_get_recent_posts( $args ),2);
 
-                    <p> Parallax Tutorial</p>
-                    <p> Dec. 2015</p>
+                foreach( $recent_posts as $recent ){
+                 echo '<div class="news">
+
+                    <p>'.$recent["post_title"].'</p>
+                    <p>'.date('M Y',strtotime($recent["post_date"])).'</p>
                     <br/>
 
                     <p><a class="news-link" href="#"> Read More</a></p>
-                </div>
-                <div class="news">
+                </div>';
 
-                    <p> Positioning in CSS</p>
-                    <p> Nov. 2015</p>
-                    <br/>
+                }
+                ?>
 
-                    <p><a class="news-link" href="#"> Read More</a></p>
-                </div>
-                <div class="news">
-
-                    <p> What is Node.js?</p>
-                    <p> Sep. 2015</p>
-                    <br />
-
-                    <p><a class="news-link" href="#"> Read More</a></p>
-                </div>
             </aside>
         </div>
     </section>
@@ -301,17 +297,11 @@
 
     <section id="section-zurich">
 
-        <img src="<?php bloginfo('template_url'); ?>/assets/img/bg/divider661.jpg">
-        <div id="zurich">
-            <h1>CRAFTED IN ZURICH, SWITZERLAND.</h1>
-            <hr width="49%" ; color="#CCC9C9">
-            <p>Paradeplatz 987,</p>
-            <p>+0041 9884 4893</p>
-            <p>
-                <a href="#"></a>
-                <a href="#"></a>
-            </p>
-        </div>
+        <?php
+        $content_post = get_page_by_title('zurich');
+        $content = $content_post->post_content;
+        echo $content;
+        ?>
 
     </section>
 
