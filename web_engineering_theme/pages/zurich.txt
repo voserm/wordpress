@@ -1,0 +1,11 @@
+       <img src="../wp-content/themes/tutorial_theme/assets/img/bg/divider661.jpg">
+        <div id="zurich">
+            <h1>CRAFTED IN ZURICH, SWITZERLAND.</h1>
+            <hr width="49%" ; color="#CCC9C9">
+            <p>Paradeplatz 987,</p>
+            <p>+0041 9884 4893</p>
+            <p>
+                <a href="#"></a>
+                <a href="#"></a>
+            </p>
+        </div>

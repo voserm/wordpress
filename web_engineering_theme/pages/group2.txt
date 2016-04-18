@@ -1,0 +1,11 @@
+                <div>
+                    <br>
+                    <br>
+                    <br>
+                    <h1 class="title pages-headline"> PART CODER! </h1>
+                    <hr width="49%" ; color="#CCC9C9">
+
+                    <p class="text"> But a website cannot be just nice to see... It has to work! That's why we have JavaScript, PHP and CMS like WordPress </p>
+                    </br>
+                    </br>
+                </div>

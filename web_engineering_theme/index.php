@@ -22,7 +22,9 @@
             <div class="headertext">
                 <h1><span ></span></h1>
                 <?php
-                    $content_lines = explode("\n",get_post_field('post_content', 25));
+                    $content_post = get_page_by_title('headertext');
+                    $content = $content_post->post_content;
+                    $content_lines = explode("\n",$content);
                 ?>
                 <p><?php echo $content_lines[0]; ?></p>
                 </br>

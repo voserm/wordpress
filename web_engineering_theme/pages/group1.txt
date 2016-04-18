@@ -1,0 +1,12 @@
+                <div>
+                    <br>
+                    <h1 class="title pages-headline"> PART DESIGNER... </h1>
+                    <hr width="34%" ; color="#CCC9C9">
+
+                    <p class="text"> A web developer needs to have a good aesthetic eye on his product. </br>
+                        For this reason part of my skills include user interface and </br>
+                        interaction design. </p>
+                    </br>
+                    </br>
+                    </br>
+                </div>
