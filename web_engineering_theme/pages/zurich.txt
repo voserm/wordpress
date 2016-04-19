@@ -1,4 +1,4 @@
-       <img src="../wp-content/themes/tutorial_theme/assets/img/bg/divider661.jpg">
+       <img src="../wp-content/themes/web_engineering_theme_2/assets/img/bg/divider661.jpg">
         <div id="zurich">
             <h1>CRAFTED IN ZURICH, SWITZERLAND.</h1>
             <hr width="49%" ; color="#CCC9C9">

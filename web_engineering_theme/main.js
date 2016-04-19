@@ -12,7 +12,7 @@ var secBlog = new Section();
 var secContact = new Section();
 var maxCnt = -1;
 
-var imgMax = 70;
+var imgMax = 63;
 var imgMin = 30;
 
 function sectionFreqUpdate(section, inline) {
@@ -24,7 +24,7 @@ function sectionFreqUpdate(section, inline) {
             console.log(new Date() - section.begin);
             if (new Date() - section.begin >= 2000) {
                 section.visitCnt++;
-                section.begin = new Date();
+                //section.begin = new Date();
             }
         }
         if (section == secContact) {
@@ -32,10 +32,10 @@ function sectionFreqUpdate(section, inline) {
         }
     } else {
         if (section.inline) {
-            if (new Date() - section.begin >= 2000) {
+            /*if (new Date() - section.begin >= 2000) {
                 section.visitCnt++;
                 section.begin = new Date();
-            }
+            }*/
             section.inline = false;
         }
     }
@@ -72,27 +72,26 @@ function updateMenuIcons() {
 
 $.fn.in_viewport = function () {
     var rect = this[0].getBoundingClientRect();
-      return (
-          (rect.height > 0 || rect.width > 0) &&
-          rect.bottom >= 0 &&
-          rect.right >= 0 &&
-          rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 100 && // -100 to delay animation start (not right after appearance)
-          rect.left <= (window.innerWidth || document.documentElement.clientWidth)
-      );
+	return (
+		(rect.height > 0 || rect.width > 0) &&
+		rect.bottom >= 0 &&
+		rect.right >= 0 &&
+		rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 100 && // -100 to delay animation start (not right after appearance)
+		rect.left <= (window.innerWidth || document.documentElement.clientWidth)
+	);
 };
 
-$.fn.scroll_aligned = function () {
-    var rect = this[0].getBoundingClientRect();
-    /*if ((rect.top >= 0 && rect.top <= 275) && ($(document).height() - this.offset().top - this.height() <= 300)) {
-        alert("yes");
-    }*/
-      return (
-          // aligned if on page top (with epsilon offset of 180)
-          (rect.top >= 0 && rect.top <= 180) ||
-          // OR for elements that are on page bottom (if distance to bottom <= 300),
-          // increase epsilon to 275 (since its impossible for them to be on page top)
-          ((rect.top >= 0 && rect.top <= 330) && ($(document).height() - this.offset().top - this.height() <= 300))
-      );
+
+$.fn.scroll_aligned = function () {    
+	var rect = this[0].getBoundingClientRect();
+    
+    return (
+        // aligned if on page top (with epsilon offset of 180)
+        (rect.top >= 0 && rect.top <= 180) ||
+        // OR for elements that are on page bottom (if distance to bottom <= 300),
+        // increase epsilon to 275 (since its impossible for them to be on page top)
+        ((rect.top >= 0 && rect.top <= 330) && ($(document).height() - this.offset().top - this.height() <= 300))
+    );
 };
 
 function animSetUp() {
@@ -107,9 +106,9 @@ function animSetUp() {
         }
 
         if ($('#group1').in_viewport()) {
-            $('#group1 .text').slideDown(700);
-            $('#group1 .title').slideDown(700);
-            $('#group1 hr').slideDown(700);
+            $('#group1 .text').slideDown(1000);
+            $('#group1 .title').slideDown(1000);
+            $('#group1 hr').slideDown(1000);
         }
 
         if ($('#group2').in_viewport()) {
@@ -127,19 +126,6 @@ function animSetUp() {
 
         if ($('#portfolio').in_viewport()) {
             $('#portfolio').animate({'margin-left': '0'});
-            $( '#portfolio_all' ).click(function() {
-                $('.portfolio-part').show();
-            });
-
-            $( "#portfolio_uidesign" ).click(function() {
-                $('.portfolio-part').hide();
-                $('.uidesign').show();
-            });
-
-            $( "#portfolio_androidpage" ).click(function() {
-                $('.portfolio-part').hide();
-                $('.androidpage').show();
-            });
         }
 
         if ($('#blog').in_viewport()) {
@@ -155,22 +141,21 @@ function animSetUp() {
             $('#contact .contact-div').animate({'top': '0'}, 500);
         }
 
-        // If respective sections are alligned to scroll,
-        // update frequencies of section visits
-                    //var rect = $('#contact')[0].getBoundingClientRect();
-                //alert(rect.top + " " + ($(document).height() - $('#contact').offset().top - $('#contact').height()));
-        sectionFreqUpdate(secHome, $('#home').scroll_aligned());
+        /*sectionFreqUpdate(secHome, $('#home').scroll_aligned());
         sectionFreqUpdate(secAbout, $('#about-all').scroll_aligned());
-        /*sectionFreqUpdate(secAbout, $('#group1').scroll_aligned());
-        sectionFreqUpdate(secAbout, $('#group2').scroll_aligned());
-        sectionFreqUpdate(secAbout, $('#skills').scroll_aligned());*/
         sectionFreqUpdate(secPortfolio, $('#portfolio').scroll_aligned());
         sectionFreqUpdate(secBlog, $('#blog').scroll_aligned());
-        //alert($('#contact').scroll_aligned());
-        sectionFreqUpdate(secContact, $('#contact').scroll_aligned());
+        sectionFreqUpdate(secContact, $('#contact').scroll_aligned());*/
 
-        //alert(secContact.visitCnt);
+}
 
+function updateAll() {
+	sectionFreqUpdate(secHome, $('#home').scroll_aligned());
+    sectionFreqUpdate(secAbout, $('#about-all').scroll_aligned());
+    sectionFreqUpdate(secPortfolio, $('#portfolio').scroll_aligned());
+    sectionFreqUpdate(secBlog, $('#blog').scroll_aligned());
+    sectionFreqUpdate(secContact, $('#contact').scroll_aligned());
+	setTimeout(updateAll, 2000);
 }
 
 $(document).ready(function() {
@@ -192,9 +177,24 @@ $(document).ready(function() {
 
     // Animate elements visible on page load
     animSetUp();
+	updateAll();
+	
+	/*setInterval(updateAll, 2000);*/
 
     $(window).scroll(function () {
             // Animate elements visible upon scrolling
             animSetUp();
     });
 });
+
+function updatePortfolio(selectedItem){
+	$(".portfolio-part").each(function() {
+		$(this).css("display", "inline-block");
+	});
+	
+	if($(selectedItem).attr("name") != "ALL") {
+		$(".portfolio-part[name!='"+ $(selectedItem).attr("name") +"']").each(function() {
+			$(this).css("display", "none");
+		});
+	}
+}
