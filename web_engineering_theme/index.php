@@ -144,79 +144,39 @@
 
                 <!-- PORTFOLIO IMAGE 1 -->
 
-                <div name="UI DESIGN" class="portfolio-part">
-                    <figure>
-                        <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio01.jpg" alt="">
-                        <figcaption class="portfolio-bottom">
-                            <h5 class="portfolio-title">UI DESIGN</h5>
-                            <a class="portfolio-link" data-toggle="modal" href="#myModal1">Take a Look</a>
-                        </figcaption>
-                    </figure>
-                </div>
+                <?php
+                $type = 'portfolio-item';
+                $args = array(
+                    'post_type' => $type,
+                    'post_status' => 'publish',
+                    'posts_per_page' => -1,
+                    'caller_get_posts' => 1);
 
+                $my_query = null;
+                $my_query = new WP_Query($args);
+                if ($my_query->have_posts()) {
+                    while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
-                <!-- PORTFOLIO IMAGE 2 -->
+                        <?php
+                        $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
+                        $url = $thumb['0'];
+                        ?>
 
-                <div name="UI DESIGN" class="portfolio-part">
-                    <figure>
-                        <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio02.jpg" alt="">
-                        <figcaption class="portfolio-bottom">
-                            <h5 class="portfolio-title">UI DESIGN</h5>
-                            <a class="portfolio-link" data-toggle="modal" href="#myModal2">Take a Look</a>
-                        </figcaption>
-                    </figure>
-                </div>
+                        <div name="<?php echo get_post_meta( $post->ID, 'type', true ) ?>" class="portfolio-part">
+                            <figure>
+                                <img class="portfolio-img" src="<?php echo $url; ?>" alt="">
+                                <figcaption class="portfolio-bottom">
+                                    <h5 class="portfolio-title"><?php the_title(); ?></h5>
+                                    <a class="portfolio-link" data-toggle="modal" href="#<?php echo get_post_meta( $post->ID, 'name', true ) ?>">Take a Look</a>
+                                </figcaption>
+                            </figure>
+                        </div>
 
-
-                <!-- PORTFOLIO IMAGE 3 -->
-
-                <div name="ANDROID PAGE" class="portfolio-part">
-                    <figure>
-                        <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio03.jpg" alt="">
-                        <figcaption class="portfolio-bottom">
-                            <h5 class="portfolio-title">ANDROID PAGE</h5>
-                            <a class="portfolio-link" data-toggle="modal" href="#myModal3">Take a Look</a>
-                        </figcaption>
-                    </figure>
-                </div>
-
-                <!-- PORTFOLIO IMAGE 4 -->
-
-                <div name="ANDROID PAGE" class="portfolio-part">
-                    <figure>
-                        <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio04.jpg" alt="">
-                        <figcaption class="portfolio-bottom">
-                            <h5 class="portfolio-title">ANDROID PAGE</h5>
-                            <a class="portfolio-link" data-toggle="modal" href="#myModal4">Take a Look</a>
-                        </figcaption>
-                    </figure>
-                </div>
-
-
-                <!-- PORTFOLIO IMAGE 5-->
-
-                <div name="ANDROID PAGE" class="portfolio-part">
-                    <figure>
-                        <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio05.jpg" alt="">
-                        <figcaption class="portfolio-bottom">
-                            <h5 class="portfolio-title">ANDROID PAGE</h5>
-                            <a class="portfolio-link" data-toggle="modal" href="#myModal5">Take a Look</a>
-                        </figcaption>
-                    </figure>
-                </div>
-
-
-                <!-- PORTFOLIO IMAGE 6 -->
-
-                <div name="ANDROID PAGE" class="portfolio-part">
-                    <figure>
-                        <img class="portfolio-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio06.jpg" alt="">
-                        <figcaption class="portfolio-bottom">
-                            <h5 class="portfolio-title">ANDROID PAGE</h5>
-                            <a class="portfolio-link" data-toggle="modal" href="#myModal6">Take a Look</a>
-                        </figcaption>
-                    </figure>
-                </div>
+                        <?php
+                    endwhile;
+                }
+                wp_reset_query();  // Restore global post data stomped by the_post().
+                ?>
             </div>
 		</div>
 		<br>
@@ -226,95 +186,44 @@
 	
 	<section id="modal">
 
-        <div id="myModal1" class="info">
-            <div class="info-content">
-                <header>
-                    <h2> UI DESIGN </h2>
-                    <a class="button-close" href="#close">×</a>
-                </header>
-                <content>
-                    <img class="info-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio01.jpg" alt="">
-                </content>
-                <footer>
-                    <p>This project was crafted for Some Name corp. Detail here a little about your job requirements and the tools used. Tell about the challenges faced and what you and your team did to solve it.</p>
-                </footer>
-            </div>
-        </div>
+        <?php
+        $type1 = 'portfolio-item';
+        $args1 = array(
+            'post_type' => $type1,
+            'post_status' => 'publish',
+            'posts_per_page' => -1,
+            'caller_get_posts' => 1);
 
-        <div id="myModal2" class="info">
-            <div class="info-content">
-                <header>
-                    <h2> UI DESIGN </h2>
-                    <a class="button-close" href="#close">×</a>
-                </header>
-                <content>
-                    <img class="info-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio02.jpg" alt="">
-                </content>
-                <footer>
-                    <p>This project was crafted for Some Name corp. Detail here a little about your job requirements and the tools used. Tell about the challenges faced and what you and your team did to solve it.</p>
-                </footer>
-            </div>
-        </div>
+        $my_query1 = null;
+        $my_query1 = new WP_Query($args1);
+        if ($my_query1->have_posts()) {
+            while ($my_query1->have_posts()) : $my_query1->the_post(); ?>
 
-        <div id="myModal3" class="info">
-            <div class="info-content">
-                <header>
-                    <h2> ANDROID PAGE </h2>
-                    <a class="button-close" href="#close">×</a>
-                </header>
-                <content>
-                    <img class="info-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio03.jpg" alt="">
-                </content>
-                <footer>
-                    <p>This project was crafted for Some Name corp. Detail here a little about your job requirements and the tools used. Tell about the challenges faced and what you and your team did to solve it.</p>
-                </footer>
-            </div>
-        </div>
+                <?php
+                $thumb1 = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
+                $url1 = $thumb1['0'];
+                ?>
 
-        <div id="myModal4" class="info">
-            <div class="info-content">
-                <header>
-                    <h2> ANDROID PAGE </h2>
-                    <a class="button-close" href="#close">×</a>
-                </header>
-                <content>
-                    <img class="info-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio04.jpg" alt="">
-                </content>
-                <footer>
-                    <p>This project was crafted for Some Name corp. Detail here a little about your job requirements and the tools used. Tell about the challenges faced and what you and your team did to solve it.</p>
-                </footer>
-            </div>
-        </div>
+                <div id="<?php echo get_post_meta( $post->ID, 'name', true ) ?>" class="info">
+                    <div class="info-content">
+                        <header>
+                            <h2> <?php the_title(); ?> </h2>
+                            <a class="button-close" href="#close">×</a>
+                        </header>
+                        <content>
+                            <img class="info-img" src="<?php echo $url1; ?>">
+                        </content>
+                        <footer>
+                            <p><?php the_content(); ?></p>
+                        </footer>
+                    </div>
+                </div>
 
-        <div id="myModal5" class="info">
-            <div class="info-content">
-                <header>
-                    <h2> ANDROID PAGE </h2>
-                    <a class="button-close" href="#close">×</a>
-                </header>
-                <content>
-                    <img class="info-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio05.jpg" alt="">
-                </content>
-                <footer>
-                    <p>This project was crafted for Some Name corp. Detail here a little about your job requirements and the tools used. Tell about the challenges faced and what you and your team did to solve it.</p>
-                </footer>
-            </div>
-        </div>
-
-        <div id="myModal6" class="info">
-            <div class="info-content">
-                <header>
-                    <h2> ANDROID PAGE </h2>
-                    <a class="button-close" href="#close">×</a>
-                </header>
-                <content>
-                    <img class="info-img" src="<?php bloginfo('template_url'); ?>/assets/img/portfolio/folio06.jpg" alt="">
-                </content>
-                <footer>
-                    <p>This project was crafted for Some Name corp. Detail here a little about your job requirements and the tools used. Tell about the challenges faced and what you and your team did to solve it.</p>
-                </footer>
-            </div>
-        </div>
+                <?php
+            endwhile;
+        }
+        wp_reset_query();  // Restore global post data stomped by the_post().
+        ?>
 	</section>
 
     <!-- ==== BLOG ==== -->
