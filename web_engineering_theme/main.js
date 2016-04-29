@@ -12,6 +12,8 @@ var secBlog = new Section();
 var secContact = new Section();
 var maxCnt = -1;
 
+var html = "";
+
 var imgMax = 63;
 var imgMin = 30;
 
@@ -160,6 +162,21 @@ function updateAll() {
 
 $(document).ready(function() {
 
+    window.addEventListener('popstate', function(e) {
+        var character = e.state;
+        console.log(character);
+        if (character != null) {
+            $('.blog-content').html('');
+            $('.blog-content').append(character.html);
+            $('.blog-post').css("left","0");
+
+        } else {
+
+        $('.blog-content').html('');
+        $('.blog-content').append(html);
+    }
+    });
+
     // Hide elements which are animated by appearance
     $('.headertext').hide();
 
@@ -197,4 +214,77 @@ function updatePortfolio(selectedItem){
 			$(this).css("display", "none");
 		});
 	}
+}
+
+function myFunction(){
+    var obj = [];
+
+    jQuery.ajax({
+        type: "POST",
+        url: "/wp-admin/admin-ajax.php",
+        data: { action: 'wps_get_posts' }
+    }).done(function( response ) {
+        //alert( response );
+        obj = JSON.parse(response);
+        console.log(response);
+        console.log(obj[0].ID);
+        stateObj = { foo: response};
+
+    });
+
+    var stateObj = {foo:"bar"};
+    history.pushState(stateObj, "post", "readpost.html");
+}
+
+
+function zoomPost(id,element){
+    console.log(element);
+    ohtml = element.outerHTML;
+    html = $('.blog-content').html();
+    console.log(element);
+    $('.blog-content').html('');
+    //console.log(element.outerHTML);
+    //$('.blog-content').html(ohtml);
+
+    jQuery.ajax({
+        type: "POST",
+        url: "/wp-admin/admin-ajax.php",
+        data: { action: 'wps_get_posts' , id: id}
+    }).done(function( response ) {
+        //alert( response );
+        obj = JSON.parse(response);
+        console.log(obj);
+
+        var strVar="";
+        strVar += "<article class=\"blog-post\">";
+        strVar += "";
+        strVar += "                <header class=\"post-info\">";
+        strVar += "                    <br>             ";
+        strVar += "                    <p>bild<\/p>";
+        strVar += "                    <h4>"+obj.post_author+"<\/h4>";
+        strVar += "                    <h5>Published "+obj.post_date+".<\/h5>";
+        strVar += "                <\/header>";
+        strVar += "";
+        strVar += "                <section class=\"post-content\">";
+        strVar += "";
+        strVar += "                    <h2>"+obj.post_title+"<\/h2>";
+        strVar += "                    <p>"+obj.post_content+"<\/p>";
+        strVar += "";
+        strVar += "                    <br\/>";
+        strVar += "                    <br\/>";
+        strVar += "                    <br\/>";
+        strVar += "                    <br>";
+        strVar += "";
+        strVar += "                <\/section>";
+        strVar += "";
+        strVar += "            <\/article>";
+
+        $('.blog-content').html(strVar);
+        $('.blog-post').css("left","0");
+
+        var stateObj = {html:strVar};
+        history.pushState(stateObj, "post", "readpost.html");
+
+    });
+
 }
